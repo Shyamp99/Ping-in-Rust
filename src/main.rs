@@ -115,14 +115,14 @@ fn main() {
     let mut ts_arc:Arc<Mutex<TransportSender>>;
     if ipv == 4{
         let mut temp = transport_channel(4096, Layer4(Ipv6(IpNextHeaderProtocols::Icmp)));
-        ts_arc = Arc::new(Mutex::new(temp.unwrap()));
+        ts_arc = Arc::new(Mutex::new(temp.unwrap().0));
         
         //for testing
         send_v4_echo(&mut ts_arc.lock().unwrap(), ipaddr, ipv);
     }
     else{
         let mut temp = transport_channel(4096, Layer4(Ipv4(IpNextHeaderProtocols::Icmpv6)));
-        ts_arc = Arc::new(Mutex::new(temp));
+        ts_arc = Arc::new(Mutex::new(temp.unwrap().0));
         
         //for testing
         send_v6_echo(&mut ts_arc.lock().unwrap(), ipaddr, ipv);
