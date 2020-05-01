@@ -1,5 +1,5 @@
 [package]
-name = "cloudflare"
+name = "rust_ping"
 version = "0.1.0"
 authors = ["shyamp99 <shyamp99@gmail.com>"]
 edition = "2018"
